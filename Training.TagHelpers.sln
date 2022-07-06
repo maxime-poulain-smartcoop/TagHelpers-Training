@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.TagHelpers.Web", "src\Training.TagHelpers.Web\Training.TagHelpers.Web.csproj", "{068EFEF6-385F-48DC-AE64-1CA9A03BBD91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.TagHelpers.Web", "src\Training.TagHelpers.Web\Training.TagHelpers.Web.csproj", "{068EFEF6-385F-48DC-AE64-1CA9A03BBD91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.TagHelpers.Rcl", "src\Training.TagHelpers.Rcl\Training.TagHelpers.Rcl.csproj", "{DDA9C7D5-35DA-4895-8CC5-F710D654551D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{068EFEF6-385F-48DC-AE64-1CA9A03BBD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{068EFEF6-385F-48DC-AE64-1CA9A03BBD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{068EFEF6-385F-48DC-AE64-1CA9A03BBD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA9C7D5-35DA-4895-8CC5-F710D654551D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA9C7D5-35DA-4895-8CC5-F710D654551D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA9C7D5-35DA-4895-8CC5-F710D654551D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA9C7D5-35DA-4895-8CC5-F710D654551D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
