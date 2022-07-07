@@ -12,12 +12,20 @@
 
     <h2 class="c-h2">Member registration</h2>
     <form method="post">
-        <smart-input-text placeholder="What is your first name ?" asp-for="RegisterMemberRequest!.FirstName" class="u-spacer-bottom"></smart-input-text>
-        <span asp-validation-for="RegisterMemberRequest!.FirstName"></span>
-        <smart-input-text placeholder="What is your last name ?" asp-for="RegisterMemberRequest!.LastName" class="u-spacer-bottom"></smart-input-text>
-        <input type="number" asp-for="RegisterMemberRequest!.Age" placeholder="Your age?" class="u-spacer-bottom"/>
-        <span asp-validation-for="RegisterMemberRequest!.Age"></span>
-        <br/>
-        <button type="submit">Click me to submit the form !!!</button>
+        @*First name*@
+        <smart-input-text placeholder="What is your first name ?" asp-for="RegisterMemberRequest!.FirstName"></smart-input-text>
+        <span asp-validation-for="RegisterMemberRequest!.FirstName" class="c-form-help-text--error"></span>
+
+        @*Last name*@
+        <smart-input-text placeholder="What is your last name ?" asp-for="RegisterMemberRequest!.LastName" class="u-spacer-top"></smart-input-text>
+        <span asp-validation-for="RegisterMemberRequest!.LastName" class="c-form-help-text--error"></span>
+
+        @*Validation for the request (i.e. checks if named John Doe)*@
+        <span asp-validation-for="RegisterMemberRequest!" class="c-form-help-text--error"></span>
+
+        <input type="number" asp-for="RegisterMemberRequest!.Age" placeholder="Your age?" class="u-spacer-top o-flex"/>
+        <span asp-validation-for="RegisterMemberRequest!.Age" class="c-form-help-text--error o-flex"></span>
+
+        <button class="u-spacer-top" type="submit">Click me to submit the form !!!</button>
     </form>
 </div>

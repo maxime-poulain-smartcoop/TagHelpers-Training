@@ -1,7 +1,14 @@
+using FluentValidation.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages()
+    .AddFluentValidation(options =>
+    {
+        options.DisableDataAnnotationsValidation = true;
+        options.RegisterValidatorsFromAssemblyContaining<Program>();
+    });
 
 var app = builder.Build();
 
