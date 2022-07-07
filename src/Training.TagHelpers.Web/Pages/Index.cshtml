@@ -8,9 +8,11 @@
     <h1>Original input text component</h1>
     <input type="text" id="the-id" placeholder="This is the placeholder" class="c-input" />
 
-    <hr/>
+    <hr />
 
     <h1>Our tag helper</h1>
-
-    <smart-input-text id="the-id-of-the-tag-helpers" placeholder="This is the placeholder" asp-for="FirstName"></smart-input-text>
+    <form method="post">
+        <smart-input-text id="the-id-of-the-tag-helpers" placeholder="This is the placeholder" asp-for="FirstName"></smart-input-text>
+        <button type="submit">Click me to submit the form !!!</button>
+    </form>
 </div>

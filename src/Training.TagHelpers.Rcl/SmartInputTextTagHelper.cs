@@ -80,6 +80,11 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
             {
                 output.Attributes.Add("name", name);
             }
+
+            if (For.Model is string value)
+            {
+                output.Attributes.Add("value", value);
+            }
         }
 
         // Our component is done.

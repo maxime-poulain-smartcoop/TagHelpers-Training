@@ -18,4 +18,11 @@ public class IndexModel : PageModel
     {
 
     }
+
+    // Convention requires to have the method with the following nomenclature
+    // [On] plus [HTTP Verb]
+    public void OnPost()
+    {
+
+    }
 }
