@@ -1,5 +1,6 @@
 ﻿using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Training.TagHelpers.Rcl;
@@ -19,6 +20,12 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
     public string? Id { get; set; }
 
     public string? Placeholder { get; set; }
+
+    /// <summary>
+    /// Bind the object associated to the 'asp-for' attribute.
+    /// </summary>
+    [HtmlAttributeName("asp-for")]
+    public ModelExpression? For { get; set; }
 
     public override void Init(TagHelperContext context)
     {
@@ -63,6 +70,17 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
         // Finally the input text needs to have the 'c-input' class.
         // We can use this extension method.
         output.AddClass("c-input", HtmlEncoder.Default);
+
+        // This add a correct name attribute thanks to the For property
+        if (!string.IsNullOrEmpty(For?.Name))
+        {
+            var name = For.Metadata.Name;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                output.Attributes.Add("name", name);
+            }
+        }
 
         // Our component is done.
 

@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Training.TagHelpers.Web.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
+
+    [BindProperty]
+    public string? FirstName { get; set; }
 
     public IndexModel(ILogger<IndexModel> logger)
     {
