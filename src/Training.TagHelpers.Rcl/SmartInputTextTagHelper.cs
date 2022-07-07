@@ -1,4 +1,6 @@
 ﻿using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -21,6 +23,10 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
 
     public string? Placeholder { get; set; }
 
+    [HtmlAttributeNotBound]
+    [ViewContext]
+    public ViewContext ViewContext { get; set; } = null!;
+
     /// <summary>
     /// Bind the object associated to the 'asp-for' attribute.
     /// </summary>
@@ -32,6 +38,13 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
         // Here we can add some behavior upon the initialization of the component.
         // Validation and exception throwing on particular cases should be here.
         base.Init(context);
+
+        // Even if this is impossible to be true.
+        // It just illustrated where to put validation.
+        if (ViewContext is null)
+        {
+            throw new InvalidOperationException("VIew context cannot be null");
+        }
     }
 
     public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -76,11 +89,18 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
         {
             var name = For.Metadata.Name;
 
-            if (!string.IsNullOrEmpty(name))
+            output.Attributes.Add("name", name);
+
+            // Get the ModelStateEntry associated to the SmartInputTextTagHelper
+            // If Invalid handling logic is done. (i.e. add error css class).
+            var modelStateEntry = ViewContext.ModelState[name];
+            if (modelStateEntry is not null && modelStateEntry.ValidationState == ModelValidationState.Invalid)
             {
-                output.Attributes.Add("name", name);
+                output.AddClass("c-input--error", HtmlEncoder.Default);
             }
 
+            // If the ModelExpression associated with the Tag Helper has a value.
+            // We restore it.
             if (For.Model is string value)
             {
                 output.Attributes.Add("value", value);
@@ -88,6 +108,5 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
         }
 
         // Our component is done.
-
     }
 }

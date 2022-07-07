@@ -23,6 +23,9 @@ public class IndexModel : PageModel
     // [On] plus [HTTP Verb]
     public void OnPost()
     {
-
+        if (FirstName?.Equals("Hello", StringComparison.OrdinalIgnoreCase) == true)
+        {
+            ModelState.AddModelError(nameof(FirstName), "OMG OMG OMG");
+        }
     }
 }
