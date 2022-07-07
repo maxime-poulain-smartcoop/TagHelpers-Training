@@ -10,9 +10,14 @@
 
     <hr />
 
-    <h1>Our tag helper</h1>
+    <h2 class="c-h2">Member registration</h2>
     <form method="post">
-        <smart-input-text id="the-id-of-the-tag-helpers" placeholder="This is the placeholder" asp-for="FirstName"></smart-input-text>
+        <smart-input-text placeholder="What is your first name ?" asp-for="RegisterMemberRequest!.FirstName" class="u-spacer-bottom"></smart-input-text>
+        <span asp-validation-for="RegisterMemberRequest!.FirstName"></span>
+        <smart-input-text placeholder="What is your last name ?" asp-for="RegisterMemberRequest!.LastName" class="u-spacer-bottom"></smart-input-text>
+        <input type="number" asp-for="RegisterMemberRequest!.Age" placeholder="Your age?" class="u-spacer-bottom"/>
+        <span asp-validation-for="RegisterMemberRequest!.Age"></span>
+        <br/>
         <button type="submit">Click me to submit the form !!!</button>
     </form>
 </div>

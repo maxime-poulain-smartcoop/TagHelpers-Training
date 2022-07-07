@@ -87,7 +87,7 @@ public class SmartInputTextTagHelper : TagHelper // Any Tag Helper must implemen
         // This add a correct name attribute thanks to the For property
         if (!string.IsNullOrEmpty(For?.Name))
         {
-            var name = For.Metadata.Name;
+            var name = For.Name;
 
             output.Attributes.Add("name", name);
 
